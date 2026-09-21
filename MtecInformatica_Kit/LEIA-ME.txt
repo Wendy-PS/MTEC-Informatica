@@ -1,0 +1,48 @@
+﻿==========================================================================
+ MTEC INFORMATICA
+=========================================================================
+
+  Login inicial:  admin   /   Senha: 123
+
+COMO GERAR O .EXE  (so uma vez, em um PC Windows 10/11 de 64 bits)
+------------------------------------------------------------------
+ 1. Extraia este ZIP para uma pasta comum (ex.: C:\MTEC). Nao rode de dentro
+    do ZIP
+ 2. De dois cliques em  CONSTRUIR_EXE.bat
+ 3. Aguarde. Na primeira vez ele baixa da internet (~200 MB):
+      - Java 21 (JDK Temurin)   - banco H2 (verificado por SHA-1)
+    Se voce ja tiver um JDK 21 ou mais novo, ele usa o seu.
+ 4. Ele compila, empacota o Java dentro do programa, e RODA UM AUTOTESTE do
+    banco. So mostra "PRONTO" se o autoteste passar.
+ 5. O software fica prontinho para ser executado fica em:
+        SAIDA\MTEC Informatica\MTEC Informatica.exe
+        SAIDA\MTEC_Informatica_Portatil.zip   (para levar a outro PC)
+
+ O programa gerado leva o Java junto: o PC de destino NAO precisa ter Java.
+
+ONDE FICAM OS DADOS
+-------------------
+ %APPDATA%\MtecInformatica\dados      (cole isso na barra do Explorer)
+   mtec_db.mv.db       <- o banco de dados
+   conexao.properties  <- configuracao de conexao
+
+ * BACKUP: com o programa FECHADO, copie a pasta "dados" para um pen drive.
+ * LEVAR OS DADOS PARA OUTRO PC: copie a pasta "dados" para o mesmo caminho
+   no outro computador (com o programa fechado).
+ * VOLTAR AO BANCO INICIAL: feche o programa e apague a pasta "dados"; na
+   proxima abertura ele recria o banco com os dados iniciais.
+ * Abra apenas UMA janela do sistema por vez (o banco e travado por arquivo).
+
+RODAR PELO NETBEANS
+-------------------
+ Copie a pasta src deste pacote por cima da src do seu projeto e adicione em
+ Bibliotecas o arquivo ferramentas\h2-2.3.232.jar (aparece depois que o
+ CONSTRUIR_EXE.bat rodar uma vez).
+
+AVISOS
+------
+ * O Windows pode mostrar "O Windows protegeu seu computador" (SmartScreen)
+   porque o .exe nao tem assinatura digital paga. Clique em "Mais informacoes"
+   e "Executar assim mesmo".
+ * A pasta ferramentas\ (criada no build) guarda o Java e o H2 baixados; pode
+   apagar se quiser liberar ~300 MB depois de gerar o .exe.
